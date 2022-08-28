@@ -1,0 +1,77 @@
+.card-wrapper {
+  background-image: url(../../images/bg-main-mobile.png);
+  height: 15rem;
+  position: relative;
+
+  img.img-tarjeta{
+    width: 100%;
+  }
+
+  .card{
+    position: relative;
+  }
+
+  & .main-bk-card {
+    position: absolute;
+    width: 78%;
+    right: 1rem;
+    top: 12%;
+
+    .cvc{
+        color: #fff;
+        font-size: 2.5vw;
+        position: absolute;
+        right: 14%;
+        top: 44%;
+        letter-spacing: 0.1em;
+    }
+  }
+
+  & .main-fr-card {
+    position: absolute;
+    width: 78%;
+    left: 1em;
+    top: 50%;
+
+    & .logo-tarjeta,
+    & .card-number,
+    & .card-name,
+    & .exp-date{
+        position: absolute;
+        color: #fff;
+    }
+
+    & .logo-tarjeta{
+        height: 19%;
+        border: 3px solir red;
+        top: 10%;
+        left: 7%;
+    }
+
+    & .card-number{
+        font-size: 4.8vw;
+        top: 55%;
+        left: 7%;
+        letter-spacing: 0.15rem;
+        font-weight: 400;
+    }
+
+    & .card-name{
+        font-size: 2.7vw;
+        top: 78%;
+        left: 7%;
+        text-transform: uppercase;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+    }
+
+    & .exp-date{
+        font-size: 2.7vw;
+        top: 78%;
+        right: 8%;
+        letter-spacing: 0.1rem;
+
+    }
+
+  }
+}

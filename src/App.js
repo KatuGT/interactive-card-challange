@@ -1,7 +1,9 @@
+import Main from './paginas/Main';
+
 function App() {
   return (
     <div className="App">
-      <p>hola</p>
+      <Main/>
     </div>
   );
 }
