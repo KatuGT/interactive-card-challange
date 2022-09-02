@@ -23,9 +23,11 @@ const Input = ({
 };
 
 const InputGroup = ({
-  hookFormDate,
+  hookFormMM,
+  hookFormYY,
   hookFormCVC,
-  errorMessajeDate,
+  errorMessajeMM,
+  errorMessajeYY,
   errorMessajeCVC,
   error,
 }) => {
@@ -39,23 +41,23 @@ const InputGroup = ({
             id='input-exp-date'
             placeholder='MM'
             className={classNames('inputHolder', {
-              'input-error': !isEmpty(errorMessajeDate),
-              '': isEmpty(errorMessajeDate),
+              'input-error': !isEmpty(errorMessajeMM),
+              '': isEmpty(errorMessajeMM),
             })}
-            {...hookFormDate}
+            {...hookFormMM}
           />
           <input
             type='number'
             placeholder='YY'
             className={classNames('inputHolder', {
-              'input-error': !isEmpty(errorMessajeDate),
-              '': isEmpty(errorMessajeDate),
+              'input-error': !isEmpty(errorMessajeYY),
+              '': isEmpty(errorMessajeYY),
             })}
-            {...hookFormDate}
+            {...hookFormYY}
           />
         </div>
-        {errorMessajeDate && (
-          <span className='msj-error'>{errorMessajeDate}</span>
+        {(errorMessajeMM || errorMessajeYY) && (
+          <span className='msj-error'>{errorMessajeMM || errorMessajeYY}</span>
         )}
       </div>
       <div className='input-wrapper'>

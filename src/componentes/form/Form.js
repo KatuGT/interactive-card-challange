@@ -9,7 +9,7 @@ const Form = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-
+  console.log(errors);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input
@@ -26,29 +26,51 @@ const Form = () => {
       />
       <Input
         label={'CARDHOLDER NUMBER'}
-        type={'number'}
+        type={'text'}
         placeHolder={'e.g. 1234 4566 7899 0000'}
         id={'input-number'}
         hookForm={{
           ...register('cardholderNumber', {
             required: { value: true, message: "Can't be blank" },
+            pattern: {
+              value: /^[0-9]*$/,
+              message: 'Wrong formar, numbers only',
+            },
           }),
         }}
         errorMessaje={errors?.cardholderNumber?.message}
       />
       <InputGroup
-        hookFormDate={{
-          ...register('cardholderDate', {
+        hookFormMM={{
+          ...register('cardholderMM', {
             required: { value: true, message: "Can't be blank" },
+            pattern: {
+              value: /^[0-9]*$/,
+              message: 'Wrong formar, numbers only',
+            },
+          }),
+        }}
+        hookFormYY={{
+          ...register('cardholderYY', {
+            required: { value: true, message: "Can't be blank" },
+            pattern: {
+              value: /^[0-9]*$/,
+              message: 'Wrong formar, numbers only',
+            },
           }),
         }}
         hookFormCVC={{
           ...register('cardholderCVC', {
             required: { value: true, message: "Can't be blank" },
+            pattern: {
+              value: /^[0-9]*$/,
+              message: 'Wrong formar, numbers only',
+            },
           }),
         }}
         errors={errors}
-        errorMessajeDate={errors?.cardholderDate?.message}
+        errorMessajeMM={errors?.cardholderMM?.message}
+        errorMessajeYY={errors?.cardholderYY?.message}
         errorMessajeCVC={errors?.cardholderCVC?.message}
       />
       <button type='submit'>enviar</button>

@@ -29,7 +29,7 @@
   }
 
   & input:focus{
-    outline-color:hsl(278, 94%, 30%);
+    outline: 1px solid hsl(278, 94%, 30%);
   } 
 
   & input.input-error{
