@@ -1,5 +1,17 @@
 form {
     margin-top: 24%;
     margin: 4.7em 1em;
-    
+    display: flex;
+    flex-direction: column;
+    & .btn-enviar{
+        background-color: var(--dark-violet);
+        color: #fff;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: 0.03rem;
+        font-size: 1.1rem;
+        padding: .9rem;
+        border-radius: 0.5rem;
+        flex-grow:1;
+        margin-top: 0.5rem;
+    }
 }

@@ -73,7 +73,7 @@ const Form = () => {
         errorMessajeYY={errors?.cardholderYY?.message}
         errorMessajeCVC={errors?.cardholderCVC?.message}
       />
-      <button type='submit'>enviar</button>
+      <button className='btn-enviar' type='submit'>Confirm</button>
     </form>
   );
 };
