@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useCardUpdateContext } from '../../cardProvider/CardProvider';
 import { Input, InputGroup } from '../input/Input';
 import './form.scss';
 
@@ -6,10 +8,24 @@ const Form = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
+
+  const setCardData = useCardUpdateContext();
+  useEffect(() => {
+  }, [watch]);
+  setCardData((prevState) => ({
+    ...prevState,
+    cardHolderName: watch('cardholderName'),
+    cardHolderNumber: watch('cardholderNumber'),
+    MM: watch('cardholderMM'),
+    YY: watch('cardholdeYY'),
+    CVC: watch('cardholderCVC'),
+  }));
+
+  console.log(watch());
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input
