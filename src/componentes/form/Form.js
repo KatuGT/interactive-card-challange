@@ -10,7 +10,9 @@ const Form = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: 'onBlur',
+  });
   const onSubmit = (data) => console.log(data);
 
   const setCardData = useCardUpdateContext();
@@ -21,7 +23,7 @@ const Form = () => {
     cardHolderName: watch('cardholderName'),
     cardHolderNumber: watch('cardholderNumber'),
     MM: watch('cardholderMM'),
-    YY: watch('cardholdeYY'),
+    YY: watch('cardholderYY'),
     CVC: watch('cardholderCVC'),
   }));
 
@@ -42,7 +44,7 @@ const Form = () => {
       />
       <Input
         label={'CARDHOLDER NUMBER'}
-        type={'text'}
+        type={'number'}
         placeHolder={'e.g. 1234 4566 7899 0000'}
         id={'input-number'}
         hookForm={{
@@ -52,32 +54,59 @@ const Form = () => {
               value: /^[0-9]*$/,
               message: 'Wrong formar, numbers only',
             },
+            maxLength: {
+              value: 16,
+              message: 'Must contain a max of 16 digits.',
+            },
+            minLength: {
+              value: 15,
+              message: 'Must contain a min of 15 digits.',
+            },
           }),
         }}
         errorMessaje={errors?.cardholderNumber?.message}
+        value={watch('cardholderNumber')}
       />
       <InputGroup
         hookFormMM={{
           ...register('cardholderMM', {
             required: { value: true, message: "Can't be blank" },
+            min: {
+              value: 2,
+              message: 'Must contain 2 digits.',
+            },
             pattern: {
               value: /^[0-9]*$/,
               message: 'Wrong formar, numbers only',
             },
           }),
         }}
+
         hookFormYY={{
           ...register('cardholderYY', {
             required: { value: true, message: "Can't be blank" },
+            min: {
+              value: 2,
+              message: 'Must contain 2 digits.',
+            },
             pattern: {
               value: /^[0-9]*$/,
               message: 'Wrong formar, numbers only',
             },
           }),
         }}
+
         hookFormCVC={{
           ...register('cardholderCVC', {
             required: { value: true, message: "Can't be blank" },
+            minLength: {
+              value: 3,
+              message: 'Must contain a min of 3 digits.',
+            },
+            maxLength: {
+              value: 4,
+              message: 'Must contain a max of 4 digits.',
+            },
             pattern: {
               value: /^[0-9]*$/,
               message: 'Wrong formar, numbers only',

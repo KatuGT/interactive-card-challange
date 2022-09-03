@@ -20,7 +20,7 @@ const Card = () => {
           <img className='logo-tarjeta' src={LogoCard} alt="logo de tarjeta" />
           <p className='card-number'>{cardData?.cardHolderNumber || '0000 0000 0000 0000'}</p>
           <p className='card-name'>{cardData?.cardHolderName || 'Jane Appleseed'}</p>
-          <p className='exp-date' >{cardData?.MM || '00'}/{cardData.YY || '00'}</p>
+          <p className='exp-date' >{cardData?.MM || '00'}/{cardData?.YY || '00'}</p>
         </div>
       </div>
     </section>
