@@ -5,11 +5,11 @@ const cardUpdateContext = createContext();
 
 export const CardProvider = ({ children }) => {
   const [cardData, setCardData] = useState({
-    cardHolderName: 'Jane Appleseed',
-    cardHolderNumber: '0000 0000 0000 0000',
-    MM: '00',
-    YY: '00',
-    CVC: '000',
+    cardHolderName: '',
+    cardHolderNumber: '',
+    MM: '',
+    YY: '',
+    CVC: '',
   });
   return (
     <cardUpdateContext.Provider value={setCardData}>

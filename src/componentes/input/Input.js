@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 const Input = ({
-  label, type, placeHolder, id, onChange, hookForm, errorMessaje, value,
+  label, type, placeHolder, id, hookForm, errorMessaje, value, maxLength,
 }) => {
   return (
     <div className='input-wrapper'>
@@ -14,9 +14,10 @@ const Input = ({
         })}
         type={type}
         id={id}
-        onChange={onChange}
         placeholder={placeHolder}
         {...hookForm}
+        value={value}
+        maxLength={maxLength}
       />
       {errorMessaje && <span className='msj-error'>{errorMessaje}</span>}
     </div>

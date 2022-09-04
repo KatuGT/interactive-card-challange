@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+// import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useCardUpdateContext } from '../../cardProvider/CardProvider';
+import { useCardContext, useCardUpdateContext } from '../../cardProvider/CardProvider';
 import { Input, InputGroup } from '../input/Input';
 import './form.scss';
 
@@ -16,18 +16,18 @@ const Form = () => {
   const onSubmit = (data) => console.log(data);
 
   const setCardData = useCardUpdateContext();
-  useEffect(() => {
-  }, [watch]);
+
+  // const [cardNum, setCardNum] = useState('');
+  // const useCard = useCardContext();
+  const normalizedNumber = watch('cardholderNumber')?.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
   setCardData((prevState) => ({
     ...prevState,
     cardHolderName: watch('cardholderName'),
-    cardHolderNumber: watch('cardholderNumber'),
+    cardHolderNumber: normalizedNumber,
     MM: watch('cardholderMM'),
     YY: watch('cardholderYY'),
     CVC: watch('cardholderCVC'),
   }));
-
-  console.log(watch());
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input
@@ -44,28 +44,29 @@ const Form = () => {
       />
       <Input
         label={'CARDHOLDER NUMBER'}
-        type={'number'}
+        type={'text'}
         placeHolder={'e.g. 1234 4566 7899 0000'}
         id={'input-number'}
         hookForm={{
           ...register('cardholderNumber', {
             required: { value: true, message: "Can't be blank" },
             pattern: {
-              value: /^[0-9]*$/,
+              value: /^[\d ]*$/,
               message: 'Wrong formar, numbers only',
             },
             maxLength: {
-              value: 16,
+              value: 19,
               message: 'Must contain a max of 16 digits.',
             },
             minLength: {
-              value: 15,
+              value: 18,
               message: 'Must contain a min of 15 digits.',
             },
           }),
         }}
         errorMessaje={errors?.cardholderNumber?.message}
-        value={watch('cardholderNumber')}
+        value={normalizedNumber}
+        maxLength={19}
       />
       <InputGroup
         hookFormMM={{
