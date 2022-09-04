@@ -31,7 +31,6 @@ const InputGroup = ({
   errorMessajeMM,
   errorMessajeYY,
   errorMessajeCVC,
-  error,
 }) => {
   return (
     <div className='input-group-wrapper'>

@@ -1,6 +1,6 @@
 // import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useCardContext, useCardUpdateContext } from '../../cardProvider/CardProvider';
+import { useCardUpdateContext } from '../../cardProvider/CardProvider';
 import { Input, InputGroup } from '../input/Input';
 import './form.scss';
 
@@ -17,8 +17,6 @@ const Form = () => {
 
   const setCardData = useCardUpdateContext();
 
-  // const [cardNum, setCardNum] = useState('');
-  // const useCard = useCardContext();
   const normalizedNumber = watch('cardholderNumber')?.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
   setCardData((prevState) => ({
     ...prevState,
