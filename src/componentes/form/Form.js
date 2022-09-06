@@ -2,6 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useCardUpdateContext } from '../../cardProvider/CardProvider';
+import Button from '../button/Button';
 import { Input, InputGroup } from '../input/Input';
 import './form.scss';
 
@@ -126,7 +127,7 @@ const Form = () => {
         errorMessajeYY={errors?.cardholderYY?.message}
         errorMessajeCVC={errors?.cardholderCVC?.message}
       />
-      <button className='btn-enviar' type='submit'>Confirm</button>
+      <Button text={'Confirm'} type={'submit'}/>
     </form>
   );
 };
