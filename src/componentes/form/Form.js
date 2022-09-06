@@ -1,5 +1,6 @@
 // import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { useCardUpdateContext } from '../../cardProvider/CardProvider';
 import { Input, InputGroup } from '../input/Input';
 import './form.scss';
@@ -13,11 +14,18 @@ const Form = () => {
   } = useForm({
     mode: 'onBlur',
   });
-  const onSubmit = (data) => console.log(data);
+
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    console.log(data);
+    navigate('/success');
+  };
 
   const setCardData = useCardUpdateContext();
 
   const normalizedNumber = watch('cardholderNumber')?.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+  // Formatea el numero de la tarjeta para que tenga el siguinte patron: #### #### #### ####,
+  // solo acepta números
   setCardData((prevState) => ({
     ...prevState,
     cardHolderName: watch('cardholderName'),
@@ -26,6 +34,7 @@ const Form = () => {
     YY: watch('cardholderYY'),
     CVC: watch('cardholderCVC'),
   }));
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input

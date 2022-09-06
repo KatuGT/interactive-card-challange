@@ -1,11 +1,11 @@
+import { Outlet } from 'react-router-dom';
 import Card from '../componentes/card/Card';
-import Form from '../componentes/form/Form';
 
 const Main = () => {
   return (
     <>
     <Card/>
-    <Form/>
+    <Outlet/>
     </>
   );
 };
