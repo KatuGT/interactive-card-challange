@@ -1,4 +1,5 @@
 // import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useCardUpdateContext } from '../../cardProvider/CardProvider';
@@ -27,14 +28,17 @@ const Form = () => {
   const normalizedNumber = watch('cardholderNumber')?.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
   // Formatea el numero de la tarjeta para que tenga el siguinte patron: #### #### #### ####,
   // solo acepta números
-  setCardData((prevState) => ({
-    ...prevState,
-    cardHolderName: watch('cardholderName'),
-    cardHolderNumber: normalizedNumber,
-    MM: watch('cardholderMM'),
-    YY: watch('cardholderYY'),
-    CVC: watch('cardholderCVC'),
-  }));
+
+  useEffect(() => {
+    setCardData((prevState) => ({
+      ...prevState,
+      cardHolderName: watch('cardholderName'),
+      cardHolderNumber: normalizedNumber,
+      MM: watch('cardholderMM'),
+      YY: watch('cardholderYY'),
+      CVC: watch('cardholderCVC'),
+    }));
+  }, [watch()]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
