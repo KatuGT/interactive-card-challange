@@ -1,0 +1,11 @@
+.main-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 1300px){
+    .main-wrapper{
+        display: flex;
+        flex-direction: row;
+    }
+}

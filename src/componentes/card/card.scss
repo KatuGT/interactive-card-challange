@@ -1,77 +1,139 @@
 .card-wrapper {
   background-image: url(../../images/bg-main-mobile.png);
-  height: 15rem;
-  position: relative;
+  height: 64vw;
+  background-repeat: no-repeat;
+  background-position-y: 0vw;
+  background-size: cover;
+  /* background-position: 0% 169%;; */
+  margin-bottom: 5rem;
 
-  img.img-tarjeta{
+  img.img-tarjeta {
     width: 100%;
   }
 
-  .card{
+  .card {
     position: relative;
   }
 
-  & .main-bk-card {
-    position: absolute;
+  & .back-card {
     width: 76%;
-    right: 1rem;
-    top: 9vw;
+    right: -21%;
+    top: 8vw;
 
-    .cvc{
-        color: #fff;
-        font-size: 2.5vw;
-        position: absolute;
-        right: 14%;
-        top: 44.5%;
-        letter-spacing: 0.1em;
+    & .cvc {
+      color: #fff;
+      font-size: 2.5vw;
+      position: absolute;
+      right: 14%;
+      top: 44.5%;
+      letter-spacing: 0.1em;
     }
   }
 
-  & .main-fr-card {
-    position: absolute;
+  & .front-card {
     width: 76%;
     left: 1em;
-    top: 32vw;
+    top: -11vw;
 
     & .logo-tarjeta,
     & .card-number,
     & .card-name,
-    & .exp-date{
-        position: absolute;
-        color: #fff;
+    & .exp-date {
+      position: absolute;
+      color: #fff;
     }
 
-    & .logo-tarjeta{
-        height: 19%;
-        border: 3px solir red;
-        top: 10%;
-        left: 7%;
+    & .logo-tarjeta {
+      height: 19%;
+      top: 10%;
+      left: 7%;
     }
 
-    & .card-number{
-        font-size: 4.8vw;
-        top: 55%;
-        left: 7%;
-        letter-spacing: 0.15rem;
-        font-weight: 400;
+    & .card-number {
+      font-size: 4.8vw;
+      top: 55%;
+      left: 7%;
+      letter-spacing: 0.15rem;
+      font-weight: 400;
     }
 
-    & .card-name{
-        font-size: 2.7vw;
-        top: 78%;
-        left: 7%;
-        text-transform: uppercase;
-        font-weight: 300;
-        letter-spacing: 0.1rem;
+    & .card-name {
+      font-size: 2.7vw;
+      top: 78%;
+      left: 7%;
+      text-transform: uppercase;
+      font-weight: 300;
+      letter-spacing: 0.1rem;
     }
 
-    & .exp-date{
-        font-size: 2.7vw;
-        top: 78%;
-        right: 8%;
-        letter-spacing: 0.1rem;
+    & .exp-date {
+      font-size: 2.7vw;
+      top: 78%;
+      right: 8%;
+      letter-spacing: 0.1rem;
+    }
+  }
 
+}
+
+@media screen and (min-width: 600px){
+  .card-wrapper{
+    height: 350px;
+
+    & .back-card,
+    & .front-card{
+      width: 400px;
+      z-index: 10000;
+      margin: 0 auto;      
     }
 
+    & .back-card{
+      top: 14%;
+      left: 7%;
+      & .cvc{
+        font-size: .9rem;
+      }
+    }
+
+    & .front-card{
+      top: -15%;
+      left: -7%;
+
+      & .card-number{
+        font-size: 1.6rem ;
+      }
+
+      & .card-name,
+      & .exp-date{
+        font-size: 1rem ;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .card-wrapper {
+    background-image: url(../../images/bg-main-desktop.png);
+    height: 100vh;
+    width: 25%;
+    margin-bottom: 0;
+
+    & .back-card,
+    & .front-card{
+      width: 450px;   
+    }
+
+    & .front-card{
+      top: -7%;
+      left: 10vw;
+      & .card-number{
+        font-size: 1.7rem ;
+      }
+    }
+
+    & .back-card{
+      top: 49%;
+      left: 15vw;     
+    }
   }
 }

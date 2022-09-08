@@ -8,13 +8,10 @@ const Card = () => {
   const cardData = useCardContext();
   return (
     <section className='card-wrapper'>
-      <div className='main-bk-card'>
         <div className='card back-card'>
           <img className='img-tarjeta' src={TarjetaAtras} alt='Reves de tarjeta' />
           <p className='cvc'>{cardData?.CVC || '000'}</p>
         </div>
-      </div>
-      <div className='main-fr-card'>
         <div className='card front-card'>
           <img className='img-tarjeta' src={TarjetaFrente} alt='Reves de tarjeta' />
           <img className='logo-tarjeta' src={LogoCard} alt="logo de tarjeta" />
@@ -22,7 +19,6 @@ const Card = () => {
           <p className='card-name'>{cardData?.cardHolderName || 'Jane Appleseed'}</p>
           <p className='exp-date' >{cardData?.MM || '00'}/{cardData?.YY || '00'}</p>
         </div>
-      </div>
     </section>
   );
 };
