@@ -1,6 +1,6 @@
-form {
+.wrapper-form {
     margin-top: 24%;
-    margin: 4.7em 1em;
+    margin: 0 1em;
     display: flex;
     flex-direction: column;
     & .btn-enviar{
@@ -13,5 +13,20 @@ form {
         border-radius: 0.5rem;
         flex-grow:1;
         margin-top: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 700px){
+    .wrapper-form{
+        max-width: 90%;
+        margin: 0 auto;     
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .wrapper-form{
+        justify-content: center;   
+        align-items: center;
+        width: 400px;
     }
 }

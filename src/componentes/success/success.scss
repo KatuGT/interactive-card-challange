@@ -1,8 +1,9 @@
 .success-wrapper{
-    padding:7rem 1.5rem;
+    padding:01.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     & .check-icon{
         margin-bottom: 2.5rem;
     }
@@ -20,5 +21,21 @@
         font-weight: 500;
         margin-bottom: 2.5rem;
 
+    }
+}
+
+@media screen and (min-width: 700px){
+    .success-wrapper{
+        width: 63%;
+        max-width: 40%;
+        margin: 0 auto;     
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .success-wrapper{
+        justify-content: center;   
+        align-items: center;
+        width: 400px;
     }
 }
