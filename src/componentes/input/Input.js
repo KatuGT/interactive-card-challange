@@ -69,7 +69,7 @@ const InputGroup = ({
         <label htmlFor='input-cvc'>CVC</label>
         <input
           type='text'
-          maxLength='8'
+          maxLength='3'
           id='input-cvc'
           placeholder='e.g. 123'
           className={classNames('inputHolder', {
