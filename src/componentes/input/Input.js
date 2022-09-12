@@ -1,6 +1,9 @@
 import './Input.scss';
 import classNames from 'classnames';
+import { useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
+// import NormaliceNumber from '../../helpers/NormaliceNumber';
+import { useCardContext } from '../../cardProvider/CardProvider';
 
 const Input = ({
   label, type, placeHolder, id, hookForm, errorMessaje, value, maxLength,
@@ -28,53 +31,59 @@ const InputGroup = ({
   hookFormMM,
   hookFormYY,
   hookFormCVC,
-  errorMessajeMM,
-  errorMessajeYY,
-  errorMessajeCVC,
+  errorMessageMM,
+  errorMessageYY,
+  errorMessageCVC,
 }) => {
+  console.log(errorMessageMM);
+  console.log(errorMessageYY);
   return (
     <div className='input-group-wrapper'>
       <div className='exp-date-wrapper'>
         <label htmlFor='input-exp-date'>EXP. DATE (MM/YY)</label>
         <div className='mm-yy'>
           <input
-            type='number'
+            type='text'
+            // maxLength='2'
             id='input-exp-date'
             placeholder='MM'
             className={classNames('inputHolder', {
-              'input-error': !isEmpty(errorMessajeMM),
-              '': isEmpty(errorMessajeMM),
+              'input-error': !isEmpty(errorMessageMM),
+              '': isEmpty(errorMessageMM),
             })}
             {...hookFormMM}
           />
           <input
-            type='number'
+            type='text'
+            maxLength='2'
             placeholder='YY'
             className={classNames('inputHolder', {
-              'input-error': !isEmpty(errorMessajeYY),
-              '': isEmpty(errorMessajeYY),
+              'input-error': !isEmpty(errorMessageYY),
+              '': isEmpty(errorMessageYY),
             })}
             {...hookFormYY}
           />
         </div>
-        {(errorMessajeMM || errorMessajeYY) && (
-          <span className='msj-error'>{errorMessajeMM || errorMessajeYY}</span>
+        {(errorMessageMM || errorMessageYY) && (
+          <span className='msj-error'>{errorMessageMM || errorMessageYY}</span>
         )}
       </div>
       <div className='input-wrapper'>
         <label htmlFor='input-cvc'>CVC</label>
         <input
-          type='number'
+          type='text'
+          maxLength='8'
           id='input-cvc'
           placeholder='e.g. 123'
           className={classNames('inputHolder', {
-            'input-error': !isEmpty(errorMessajeCVC),
-            '': isEmpty(errorMessajeCVC),
+            'input-error': !isEmpty(errorMessageCVC),
+            '': isEmpty(errorMessageCVC),
           })}
+          // value={cardData.CVC}
           {...hookFormCVC}
         />
-        {errorMessajeCVC && (
-          <span className='msj-error'>{errorMessajeCVC}</span>
+        {errorMessageCVC && (
+          <span className='msj-error'>{errorMessageCVC}</span>
         )}
       </div>
     </div>

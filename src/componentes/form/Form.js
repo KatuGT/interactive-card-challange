@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useCardUpdateContext } from '../../cardProvider/CardProvider';
+import NormaliceNumber from '../../helpers/NormaliceNumber';
 import Button from '../button/Button';
 import { Input, InputGroup } from '../input/Input';
 import './form.scss';
@@ -24,22 +25,21 @@ const Form = () => {
   };
 
   const setCardData = useCardUpdateContext();
-
-  const normalizedNumber = watch('cardholderNumber')
+  // Formatea el numero de la tarjeta para que tenga el siguinte patron: #### #### #### ####,
+  // solo acepta números
+  const normalizedCardNumber = watch('cardholderNumber')
     ?.replace(/[^\dA-Z]/g, '')
     .replace(/(.{4})/g, '$1 ')
     .trim();
-  // Formatea el numero de la tarjeta para que tenga el siguinte patron: #### #### #### ####,
-  // solo acepta números
 
   useEffect(() => {
     setCardData((prevState) => ({
       ...prevState,
       cardHolderName: watch('cardholderName'),
-      cardHolderNumber: normalizedNumber,
-      MM: watch('cardholderMM'),
-      YY: watch('cardholderYY'),
-      CVC: watch('cardholderCVC'),
+      cardHolderNumber: normalizedCardNumber,
+      MM: NormaliceNumber(watch('cardholderMM'), 2),
+      YY: NormaliceNumber(watch('cardholderYY'), 2),
+      CVC: NormaliceNumber(watch('cardholderCVC'), 3),
     }));
   }, [watch()]);
 
@@ -80,33 +80,33 @@ const Form = () => {
             }),
           }}
           errorMessaje={errors?.cardholderNumber?.message}
-          value={normalizedNumber}
+          value={normalizedCardNumber}
           maxLength={19}
         />
         <InputGroup
           hookFormMM={{
             ...register('cardholderMM', {
               required: { value: true, message: "Can't be blank" },
-              min: {
-                value: 2,
-                message: 'Must contain 2 digits.',
-              },
               pattern: {
                 value: /^[0-9]*$/,
                 message: 'Wrong formar, numbers only',
+              },
+              minLength: {
+                value: 2,
+                message: 'Must contain 2 digits.',
               },
             }),
           }}
           hookFormYY={{
             ...register('cardholderYY', {
               required: { value: true, message: "Can't be blank" },
-              min: {
-                value: 2,
-                message: 'Must contain 2 digits.',
-              },
               pattern: {
                 value: /^[0-9]*$/,
                 message: 'Wrong formar, numbers only',
+              },
+              minLength: {
+                value: 2,
+                message: 'Must contain 2 digits.',
               },
             }),
           }}
@@ -128,9 +128,10 @@ const Form = () => {
             }),
           }}
           errors={errors}
-          errorMessajeMM={errors?.cardholderMM?.message}
-          errorMessajeYY={errors?.cardholderYY?.message}
-          errorMessajeCVC={errors?.cardholderCVC?.message}
+          errorMessageMM={errors?.cardholderMM?.message}
+          errorMessageYY={errors?.cardholderYY?.message}
+          errorMessageCVC={errors?.cardholderCVC?.message}
+          watch={watch()}
         />
       <Button text={'Confirm'} type={'submit'} />
     </form>
