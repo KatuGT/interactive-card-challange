@@ -32,8 +32,6 @@ const InputGroup = ({
   errorMessageYY,
   errorMessageCVC,
 }) => {
-  console.log(errorMessageMM);
-  console.log(errorMessageYY);
   return (
     <div className='input-group-wrapper'>
       <div className='exp-date-wrapper'>
