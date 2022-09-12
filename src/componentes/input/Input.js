@@ -1,9 +1,6 @@
 import './Input.scss';
 import classNames from 'classnames';
-import { useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
-// import NormaliceNumber from '../../helpers/NormaliceNumber';
-import { useCardContext } from '../../cardProvider/CardProvider';
 
 const Input = ({
   label, type, placeHolder, id, hookForm, errorMessaje, value, maxLength,
